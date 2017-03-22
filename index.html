@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Migobierno.com - Servicios e Información Gobierno Estados Unidos</title>
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-store"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="description" content="Portal web que ofrece información sobre los servicios de gobierno de Estados Unidos en Español">
+
+    <link rel="stylesheet" href="_estilo/w3.css" type="text/css">
+    <link rel="stylesheet" href="_estilo/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="_estilo/mgestilo.css?v=1" type="text/css">
+    <link rel="stylesheet" href="_lib/jquery-ui-1.12.1/jquery-ui.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel='stylesheet' href="_componentes/camera/css/camera.css" type="text/css" id="camera-css" media="all">
+</head>
+
+<body class="w3-content" style="max-width:1300px">
+
+<div id="fb-root"></div>
+
+<!-- Sidenav/menu -->
+<nav id="navBarraMenu" class="w3-sidenav w3-white w3-hide-large" style="z-index:3;width:300px; display: none"></nav>
+
+<!-- Efecto para abrir la barra de menú en pantallas pequeñas -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="navBar_close()" style="cursor:pointer"
+     title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main">
+
+    <!-- Header -->
+    <header id="hEncabezadoM" class="w3-container w3-padding-4 w3-white w3-top w3-hide-large w3-hide-medium">
+        <div style="display: table; padding: 5px">
+            <div style="display: table-row">
+                <div style="display: table-cell; vertical-align: top; width: 10%">
+                    <span class="w3-opennav w3-xlarge w3-hover-text-grey" onclick="navBar_open()"><i
+                            class="fa fa-bars"></i></span>
+                </div>
+                <div style="display: table-cell; vertical-align: top; width: 30%; padding-left: 10px">
+                    <a href="index.html"><img src="imagenes/LogotipoMiGobiernocomMovil.png"
+                                              style="width:78px; height: 70px"></a>
+
+                </div>
+                <div style="display: table-cell; vertical-align: middle; width: 60%;">
+                    <div class="ui-widget" style="padding-left: 5px">
+                        <input class="w3-input w3-border w3-border-blue w3-show-inline-block" id="listaCiudadesM"
+                               placeholder="Ingresa tu ciudad">&nbsp;
+                        <div class=" w3-show-inline-block"><i class="fa fa-map-marker fa-lg"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <header id="hEncabezado" class="w3-container w3-padding-4 w3-white w3-top w3-hide-small">
+        <div class="w3-row">
+            <div class="w3-container w3-third">
+                <a href="#"><img src="imagenes/LogotipoMiGobiernocom.png" style="width:90%; height: 120px"></a>
+            </div>
+            <div class="w3-container w3-third w3-center">
+                <div style="display: table; width: 100%; height: 119px">
+                    <div style="display: table-cell; vertical-align: middle">
+                        <div class="ui-widget">
+                            <i class="fa fa-map-marker fa-2x fa-pull-right w3-show-inline-block"></i>
+                            <input class="w3-input w3-border w3-border-blue w3-show-inline-block" id="listaCiudades"
+                                   placeholder="Ingresa tu ciudad">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-container w3-third w3-center">
+                <div style="display: table; width: 100%; height: 119px">
+                    <div class="notaHeaderText" style="display: table-cell; vertical-align: middle">NO SOMOS UNA
+                        AGENCIA DE GOBIERNO
+                    </div>
+                </div>
+                <!--<button class="w3-btn w3-round w3-theme-blue w3-show-inline-block w3-hover-theme-red w3-textBtn-theme-blue">
+                    <i class="fa fa-user w3-margin-right"></i>CREA TU PERFIL
+                </button>-->
+            </div>
+        </div>
+
+        <!--<div class="w3-section btnBar">-->
+        <div class="w3-container btnBar">
+            <button class="w3-btn w3-border-right w3-padding-medium w3-hover-text-theme-blue btnBar"
+                    onclick="contenidoIndexCargar({vista: 'vInicio', alias: 'INI'});">Inicio
+            </button>
+            <button class="w3-btn w3-border-right w3-padding-medium w3-hover-text-theme-blue btnBar"
+                    onclick="contenidoIndexCargar({vista: 'vEventos', alias: 'EV_MES'});">En este mes
+            </button>
+            <button class="w3-btn w3-border-right w3-padding-medium w3-hover-text-theme-blue btnBar"
+                    onclick="contenidoIndexCargar({vista: 'vEventos', alias: 'EV_PROX'});">Eventos
+            </button>
+            <!--<button class="w3-btn w3-border-right w3-padding-medium w3-hover-text-theme-blue btnBar"
+                    onclick="contenidoIndexIrA('anclaComoPuedo', 'INI');">Cómo puedo
+            </button>-->
+            <button class="w3-btn w3-border-right w3-padding-medium w3-hover-text-theme-blue btnBar"
+                    onclick="contenidoIndexCargar({vista: 'vQuienesSomos', alias: 'QSOM'});">Quiénes somos
+            </button>
+            <button class="w3-btn w3-padding-medium w3-hover-text-theme-blue btnBar"
+                    onclick="contenidoIndexCargar({vista: 'vContacto', alias: 'CONT'});">Contáctanos
+            </button>
+
+            <div class="w3-right w3-padding-small">
+                <input type="text" name="txtBuscarEnSitio" id="txtBuscarEnSitio" size="20">
+                <button class="w3-btn w3-round w3-theme-blue w3-hover-theme-red w3-textBtn-theme-blue"
+                        onclick="contenidoIndexCargar({vista: 'vResultadosBusqueda', alias: 'BUSCAR'});">BUSCAR
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <div class="w3-hide-large w3-hide-medium" style="height:90px">&nbsp;</div> <!--small-->
+    <div class="w3-hide-large w3-hide-small" style="height:235px">&nbsp;</div> <!--medium-->
+    <div class="w3-hide-small w3-hide-medium" style="height:200px">&nbsp;</div> <!--large-->
+    <div id="dContenido"></div>
+    <input type="hidden" id="hdnAliasPaginaActual" value=""/>
+    <input type="hidden" id="hdnCategoriaIDActual" value="0"/>
+    <input type="hidden" id="hdnSubcategoriaIDActual" value="0"/>
+
+    <!-- Footer -->
+    <footer id="fPiePagina" class="w3-section">
+        <div class="w3-row-padding w3-theme-grey-d5 w3-padding-8">
+            <div class="w3-threequarter">
+                <span class="fontFooter">SUSCRÍBETE A NUESTRO BOLETÍN ELECTRÓNICO&nbsp;&nbsp;</span>
+                <input type="text" id="emailParaNewsletter" style="width: 50%" placeholder="Introduce tu e-mail">&nbsp;&nbsp;
+                <button id="sendemail" class="w3-btn w3-round w3-theme-blue w3-hover-theme-red w3-textBtn-theme-blue">
+                    ENVIAR
+                </button>
+            </div>
+            <div class="w3-quarter w3-right-align">
+                <span class="w3-small w3-text-light-grey">SÍGUENOS</span>&nbsp;&nbsp;&nbsp;
+                <a href="https://www.facebook.com/migobierno/" target="_blank">
+                    <div class="imgFB w3-show-inline-block"></div>
+                </a>
+                <!--&nbsp;
+                <div class="imgTW w3-show-inline-block"></div>-->
+            </div>
+        </div>
+        <div class="w3-row-padding w3-theme-grey-d4 w3-padding-64">
+            <div class="w3-quarter w3-margin-top">
+                <a href="#"><img src="imagenes/LogotipoPieMiGobiernocom.png" style="width:100%"></a>
+            </div>
+            <div class="w3-threequarter w3-margin-top" style="padding-top: 60px;">
+                <button class="w3-btn w3-border-left w3-border-right btnBarFooter"
+                        onclick="contenidoIndexCargar({vista: 'vInicio', alias: 'INI'});">Inicio
+                </button>
+                <button class="w3-btn w3-border-right btnBarFooter"
+                        onclick="contenidoIndexCargar({vista: 'vEventos', alias: 'EV_MES'});">En este mes
+                </button>
+                <button class="w3-btn w3-border-right btnBarFooter"
+                        onclick="contenidoIndexCargar({vista: 'vEventos', alias: 'EV_PROX'});">Eventos
+                </button>
+                <!--<button class="w3-btn w3-border-right btnBarFooter"
+                        onclick="contenidoIndexIrA('anclaComoPuedo', 'INI');">Cómo puedo
+                </button>-->
+                <button class="w3-btn w3-border-right btnBarFooter"
+                        onclick="contenidoIndexCargar({vista: 'vQuienesSomos', alias: 'QSOM'});">Quiénes somos
+                </button>
+                <button class="w3-btn w3-border-right btnBarFooter"
+                        onclick="contenidoIndexCargar({vista: 'vContacto', alias: 'CONT'});">Contáctanos
+                </button>
+            </div>
+        </div>
+    </footer>
+
+</div>
+<!-- End page content -->
+
+<!-- Noticias -->
+<div id="sec_NoticiasLoad" style="display: none;">
+    <script type="text/javascript"
+            src="http://www.feedsweep.com/Products/FeedSweep/Producer.aspx?feeds=http%3a%2f%2fcnnespanol.cnn.com%2ffeed%2f&amp;title=NOTICIAS&amp;maxoutput=5&amp;headlinelimit=3000&amp;datesort=descending&amp;displaydescriptions=false&amp;displaydates=false&amp;cat=6&amp;lang=es-ES&amp;implementation=divs&amp;feedsweepclassname=cardNoticiasEventos&amp;linkclassname=w3-hover-text-theme-blue&amp;titleclassname=encabezadoSeccion&amp;itemclassname=w3-text-white w3-padding-16&amp;includexmlbutton=false&amp;backgroundcolor=%23003366&amp;linecolor=%23003366&amp;headercolor=%23FFFFFF&amp;titlecolor=%23FF6600&amp;textcolor=%23FFFFFF&amp;datecolor=%2399CCFF&amp;key=MO3y6jcnZ0ia8VBlKwXGig&amp;ver=5.0.1.0"></script>
+</div>
+
+<!-- Scripts -->
+<script src="_lib/jquery-1.12.4.min.js"></script>
+<script src="_lib/jquery-ui-1.12.1/jquery-ui.js"></script>
+
+<script type='text/javascript' src='_componentes/camera/scripts/jquery.mobile.customized.min.js'></script>
+<script type='text/javascript' src='_componentes/camera/scripts/jquery.easing.1.3.js'></script>
+<script type='text/javascript' src='_componentes/camera/scripts/camera.min.js'></script>
+<script type="text/javascript" src='_jscript/jquery.validate.min.js'></script>
+
+<script type="text/javascript" src="controlador/cIndex.js?v=2"></script>
+<script type="text/javascript" src="controlador/cSuscripcionNewsLetter.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Contenido
+        obtenerVersionControladores();
+        indexCargarSecciones();
+    });
+
+    window.addEventListener('popstate', function (event) {
+        if (event.state == null) return;
+        contenidoIndexCargar(event.state.parametros);
+    });
+
+    // Búsqueda de ciudades
+
+    // Computatdora
+    $(function () {
+        var cacheCiudades = {};
+        $("#listaCiudades").autocomplete({
+            minLength: 3,
+            source: function (request, response) {
+                var term = request.term;
+                if (term in cacheCiudades) {
+                    response(cacheCiudades[term]);
+                    return;
+                }
+
+                $.getJSON("modelo/mListaCiudadesObtener.php", request, function (data, status, xhr) {
+                    cacheCiudades[term] = data;
+                    response(data);
+                });
+            },
+            select: function (event, ui) {
+                ciudadParametrosCargar(event, ui.item.id);
+            }
+        });
+    });
+
+    // Móvil
+    $(function () {
+        var cacheCiudades = {};
+        $("#listaCiudadesM").autocomplete({
+            minLength: 3,
+            source: function (request, response) {
+                var term = request.term;
+                if (term in cacheCiudades) {
+                    response(cacheCiudades[term]);
+                    return;
+                }
+
+                $.getJSON("modelo/mListaCiudadesObtener.php", request, function (data, status, xhr) {
+                    cacheCiudades[term] = data;
+                    response(data);
+                });
+            },
+            select: function (event, ui) {
+                ciudadParametrosCargar(event, ui.item.id);
+            }
+        });
+    });
+
+</script>
+
+<!-- Barra menu móvil -->
+<script type="text/javascript" src="_jscript/sidenav.js"></script>
+
+<!-- GoogleAnalytics -->
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-85660693-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+</body>
+<head>
+    <meta http-equiv="pragma" content="no-cache">
+</head>
+</html>
+
